@@ -1,0 +1,47 @@
+﻿@model List<StudentProject.Models.StudentViewModel>
+@{
+    ViewBag.Title = "Index";
+    var i = 0;
+}
+
+<h2>Index</h2>
+<form action="~/Students/Update" method="post">
+    <table class="table">
+        <tr>
+            <th>Sıra</th>
+            <th>Adı</th>
+            <th>Not</th>
+            <th>Geçti mi?</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(i + 1)
+                </td>
+                <td>
+                    <input type="hidden" name="students[@i].Id" value="@item.Id" />
+                    <input class="form-control" type="text" name="students[@i].Name" value="@item.Name" />
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="students[@i].Grade" value="@item.Grade" />
+                </td>
+
+                <td>
+                    <input class="form-control" type="checkbox" name="students[@i].Status" @(item.Status ? "checked" : "") value="true" />
+                    <input type="hidden" value="false" name="students[@i].Status" />
+                </td>
+                <td>
+                    <a href="~/Students/Detail/@item.Id">Detaylar</a> / 
+                    <a href="~/Students/Delete/@item.Id">Sil</a>
+                </td>
+            </tr>
+            i++;
+        }
+        <tr>
+            <td colspan="5" align="right"><button class="btn btn-primary" type="submit">Kaydet</button></td>
+        </tr>
+    </table>
+</form>
+<span class="label-info">@TempData["Message"]</span>

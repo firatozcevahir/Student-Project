@@ -1,0 +1,17 @@
+﻿@model System.DateTime?
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Model.Value.Minute
+<form action="GetTime" method="post">
+    <input type="text" name="gun" placeholder="Gün" />
+    <input type="text" name="ay" placeholder="Ay" />
+    <input type="text" name="yil" placeholder="Yıl" />
+    <input type="text" name="saat" placeholder="Saat" />
+    <input type="text" name="dakika" placeholder="Dakika" />
+    <input type="text" name="saniye" placeholder="Saniye" />
+
+    <input type="submit" value="Gönder" />
+</form>

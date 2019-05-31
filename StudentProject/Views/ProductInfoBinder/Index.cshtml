@@ -1,0 +1,20 @@
+﻿@model StudentProject.Models.ProductViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("PostProductInfo", "ProductInfoBinder", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.ProductName)
+    @Html.TextBoxFor(m => m.ProductName)
+    <hr />
+    <input type = "text" name = "gun" placeholder = "Gün" />
+    <input type = "text" name = "ay" placeholder = "Ay" />
+    <input type = "text" name = "yil" placeholder = "Yıl" />
+
+
+    <button type = "submit" > Kaydet </button >
+}
